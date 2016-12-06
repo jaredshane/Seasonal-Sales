@@ -4,10 +4,10 @@ productRequest.addEventListener("load", productsList);
 productRequest.open("GET", "products.json");
 productRequest.send();
 
-var catRequest = new XMLHttpRequest();
-catRequest.addEventListener("load", categoriesList);
-catRequest.open("GET", "categories.json");
-catRequest.send();
+var categoryRequest = new XMLHttpRequest();
+categoryRequest.addEventListener("load", categoriesList);
+categoryRequest.open("GET", "categories.json");
+categoryRequest.send();
 
 var productData;
 var catData;
@@ -35,3 +35,13 @@ function categoriesList(e) {
 
     }
 }
+
+
+
+
+
+//   if (productData.products[i].category_id === categoryData.categories[0].id)
+//   console.log(productData.products[i].name, categoryData.categories[0].name)
+//   displayNames += `<h3>${categoryData.categories[0].name}</h3>`
+//   document.getElementById('namesHere').innerHTML = displayNames;
+// }
