@@ -1,18 +1,37 @@
-var newRequest = new XMLHttpRequest()
+
+var productRequest = new XMLHttpRequest();
+productRequest.addEventListener("load", productsList);
+productRequest.open("GET", "products.json");
+productRequest.send();
+
+var catRequest = new XMLHttpRequest();
+catRequest.addEventListener("load", categoriesList);
+catRequest.open("GET", "categories.json");
+catRequest.send();
+
+var productData;
+var catData;
+
 
 function productsList(e) {
-  var productData = JSON.parse(e.target.responseText);
-  // console.log (productData);
-  // console.log (productData.products[0].name);
-  for (var i = 0; i < productData.products.length; i++) {
-    console.log(productData.products[i].name);
-    console.log(productData.products[i].price);
+  productData = JSON.parse(e.target.responseText);
+
+  for (i = 0; i < productData.products.length; i++) {
+    var productParse = productData.products[i];
+    console.log(productParse.name);
+    console.log(productParse.price);
+    console.log(productParse.category_id)
   }
+
 }
 
+function categoriesList(e) {
+    catData = JSON.parse(e.target.responseText);
+    for (j = 0; j < catData.categories.length; j++) {
+      var catParse = catData.categories[j];
+      console.log(catParse.id);
+      console.log(catParse.name);
 
 
-
-newRequest.addEventListener("load", productsList);
-newRequest.open("GET", "products.json");
-newRequest.send();
+    }
+}
