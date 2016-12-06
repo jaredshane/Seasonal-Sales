@@ -20,9 +20,6 @@
     for (var i = 0; i < productData.products.length; i++) {
       console.log(productData.products[i].name)
       console.log(productData.products[i].price)
-      displayNames += `<h1>${productData.products[i].name}</h1>`
-      displayNames += `<h2>${productData.products[i].price}</h1>`
-      document.getElementById('namesHere').innerHTML = displayNames;
 
     }
   }
@@ -36,12 +33,19 @@
   }
 
   function tryToGetThisToWork () {
+    document.getElementById('namesHere').innerHTML = "";
     for (var i = 0; i < productData.products.length; i++) {
-      if (productData.products[i].category_id === categoryData.categories[0].id)
-      console.log(productData.products[i].name, categoryData.categories[0].name)
-      displayNames = `<h1>${productData.products[i].name}
-                      <h2>${categoryData.categories[0].name}`
-      document.getElementById('namesHere').innerHTML = displayNames;
+      for (var j = 0; j < categoryData.categories.length; j++) {
 
+        if (productData.products[i].category_id === categoryData.categories[j].id){
+        console.log(productData.products[i].name, categoryData.categories[j].name)
+        displayNames = `<h1>${productData.products[i].name}
+                        <h2>${categoryData.categories[j].name}
+                        <h3>${productData.products[i].price}`
+        document.getElementById('namesHere').innerHTML += displayNames;
+
+
+      }
     }
   }
+}
